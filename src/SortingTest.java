@@ -242,9 +242,10 @@ public class SortingTest {
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	private static int[] DoRadixSort(int[] value) {
 		int[] sub = new int[value.length];
-		for(int i=0; i<10; i++){//주종관계를 번갈아가며 i번째자리수를 기준으로 counting sort
+		for(int i=1; i<1000000001; i *= 10){//주종관계를 번갈아가며 i번째 자리수를 기준으로 counting sort
 			kth_countingSort(value, sub, i, value.length);
-			kth_countingSort(sub, value, ++i, value.length);
+			i = i*10;
+			kth_countingSort(sub, value, i, value.length);
 		}
 		return (value);
 	}
@@ -257,12 +258,12 @@ public class SortingTest {
 			C[i] = 0;
 		}
 		for (int j = 0; j < n; j++) {
-			int x = ((int)(A[j] / Math.pow(10,k)) % 10) +10;
+			int x = ((A[j] / k) % 10) +10;
 			C[x]++;
 		}
 		for (int i=2; i<20; i++) C[i] = C[i]+C[i-1];
 		for(int j=n-1; j>-1; j--){
-			int x = ((int)(A[j] / Math.pow(10,k)) % 10) +10;
+			int x = ((A[j] / k) % 10) +10;
 			B[C[x]-1] = A[j];
 			C[x]--;
 		}
