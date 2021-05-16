@@ -242,10 +242,10 @@ public class SortingTest {
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	private static int[] DoRadixSort(int[] value) {
 		int[] sub = new int[value.length];
-		for(int i=1; i<1000000001; i *= 10){//주종관계를 번갈아가며 i번째 자리수를 기준으로 counting sort
-			kth_countingSort(value, sub, i, value.length);
+		for(int i=1; i<1_000_000_000; i *= 10){//주종관계를 번갈아가며 i번째 자리수를 기준으로 counting sort
+			kth_countingSort(value, sub, i, value.length);//10^8
 			i = i*10;
-			kth_countingSort(sub, value, i, value.length);
+			kth_countingSort(sub, value, i, value.length);//10^9
 		}
 		return (value);
 	}
